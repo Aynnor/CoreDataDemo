@@ -10,7 +10,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDadaManager.h"
-#import <CoreData/CoreData.h>
 
 
 @interface CoreDadaManager ()
@@ -31,7 +30,7 @@
 }
 
 
-#pragma mark - CoreData基础配置, 如果我们不使用CoreData的自动创建模型功能, 自己创建模型, 则模型需要继承自NSManagedObject, 并且我们就需要自行关联模型和数据库,
+#pragma mark - CoreData基础配置, 如果我们不使用CoreData的自动创建模型功能, 自己创建模型, 则模型需要继承自NSManagedObject, 并且模型应该写在(CoreDataProperties)分类中, 不要在模型类中定义属性!!!, 并且我们就需要自行关联模型和数据库,
 -(void)managerBaseConfig {
     
     /*
@@ -59,10 +58,17 @@
     //数据库的名称和路径, CoreData要关联到那个数据库? 此数据库文件是自定义的
     NSString *dbPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"stu_info.sqlite"];
     NSLog(@"sqlitePath = %@",dbPath);
+    //把文件地址包装为url
     NSURL *dbUrl = [NSURL fileURLWithPath:dbPath];
     
+    
     NSError *err = nil;
-    //设置数据库相关信息 添加一个持久化存储库并设置类型和路径，NSSQLiteStoreType：SQLite作为存储库, 并会自动生成SQL语句来做CRUD（增删改查）
+    /*设置数据库相关信息
+     添加一个持久化存储库并设置类型和路径，NSSQLiteStoreType：SQLite作为存储库, 并会自动生成SQL语句来做CRUD（增删改查）
+    NSSQLiteStoreType - 使用SQLite作为数据存储文件
+    NSXMLStoreType - 使用XML文件作为数据存储文件
+    NSBinaryStoreType - 使用二进制文件作为存储方式
+    */
     [store addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:dbUrl options:nil error:&err];
     
     if (err) {
@@ -70,7 +76,11 @@
         return;
     }
     
-    //3.创建上下文 保存信息 对数据库进行操作, 所有的ManagedObject的CRUD都是在context上进行的。
+    //3.创建上下文 保存信息 对数据库进行操作, 所有的ManagedObject 的CRUD都是在context上进行的。
+    /* 创建上下文的Type
+     NSPrivateQueueConcurrencyType 私有并发队列类型，操作都是在子线程中完成的。
+     NSMainQueueConcurrencyType 主并发队列类型，如果涉及到UI相关的操作，应该考虑使用这个参数初始化上下文。
+     */
     NSManagedObjectContext *content = [[NSManagedObjectContext alloc] initWithConcurrencyType:(NSMainQueueConcurrencyType)];
     
     //关联持久化助理, 建立persistStore和context的关联
@@ -93,10 +103,13 @@
     
     //给模型赋值
     model.id = 100010;
-    model.name = @"小花";
+    model.name = @"黑黑黑";
     model.age = arc4random()%20;
     model.height = arc4random()%180;
     model.gender = arc4random()%2;
+    
+    //save之前应该先判断上下文的缓存数据是否有更改
+    if (![_context hasChanges]) return;
     
     //3.保存插入的数据
     NSError *err = nil;
@@ -127,6 +140,9 @@
     }
     
     
+    //save之前应该先判断上下文的缓存数据是否有更改
+    if (![_context hasChanges]) return;
+    
     NSError *error = nil;
     //保存(确定)这个操作
     if ([_context save:&error]) {
@@ -153,6 +169,9 @@
         model.name = @"小红";
         NSLog(@"model = %@",model);
     }
+    
+    //save之前应该先判断上下文的缓存数据是否有更改
+    if (![_context hasChanges]) return;
     
     //保存(确认)此次操作
     NSError *err = nil;
@@ -222,16 +241,16 @@
     
     NSError *err = nil;
     //发送请求, 得到一个结果集
-    NSArray *arr = [_context executeFetchRequest:req error:nil];
+    NSArray *selectDatas = [_context executeFetchRequest:req error:nil];
     if (err) {
         NSLog(@"查询错误 err = %@",err);
     }
     
     
-//    for (StudentModel *model in selectDatas) {
-//        NSLog(@"查 %ld - %@ - %lf - %ld ",(long)model.id, model.name, model.age, (long)model.height);
-//    }
-    return arr;
+    for (StudentModel *model in selectDatas) {
+        NSLog(@"查 id=%zd | name=%@ | age=%lf | heigth=%zd | gender=%d",(long)model.id, model.name, model.age, (long)model.height,model.gender);
+    }
+    return selectDatas;
 }
 
 

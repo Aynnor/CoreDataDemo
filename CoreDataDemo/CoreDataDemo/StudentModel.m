@@ -10,16 +10,6 @@
 
 @implementation StudentModel
 
-//+ (NSFetchRequest<StudentModel *> *)fetchRequest {
-//    return [NSFetchRequest fetchRequestWithEntityName:@"Student"];
-//}
-
-@synthesize id;
-@synthesize name;
-@synthesize age;
-@synthesize height;
-@synthesize gender;
-
 
 
 @end

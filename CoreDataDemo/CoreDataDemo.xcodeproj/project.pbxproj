@@ -17,10 +17,10 @@
 		BBE961532473859C0044A379 /* CoreDataDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE961522473859C0044A379 /* CoreDataDemoTests.m */; };
 		BBE9615E2473859C0044A379 /* CoreDataDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE9615D2473859C0044A379 /* CoreDataDemoUITests.m */; };
 		BBE961702473876B0044A379 /* UserInfoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBE9616E2473876B0044A379 /* UserInfoModel.xcdatamodeld */; };
-		BBE96173247387A00044A379 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE96172247387A00044A379 /* CoreData.framework */; };
 		BBE9617C24738A6E0044A379 /* CoreDadaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE9617B24738A6E0044A379 /* CoreDadaManager.m */; };
-		BBE9618B2473919C0044A379 /* StudentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE9618A2473919C0044A379 /* StudentModel.m */; };
-		BBE961952473F4CB0044A379 /* xxmo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE961942473F4CB0044A379 /* xxmo.m */; };
+		BBE961A1247432740044A379 /* StudentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE961A0247432740044A379 /* StudentModel.m */; };
+		BBE961A7247434CB0044A379 /* StudentModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE961A6247434CB0044A379 /* StudentModel+CoreDataProperties.m */; };
+		BBE961A824743BCF0044A379 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE96172247387A00044A379 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,11 +63,11 @@
 		BBE96172247387A00044A379 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BBE9617A24738A6E0044A379 /* CoreDadaManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDadaManager.h; sourceTree = "<group>"; };
 		BBE9617B24738A6E0044A379 /* CoreDadaManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDadaManager.m; sourceTree = "<group>"; };
-		BBE961892473919C0044A379 /* StudentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentModel.h; sourceTree = "<group>"; };
-		BBE9618A2473919C0044A379 /* StudentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentModel.m; sourceTree = "<group>"; };
 		BBE9618C2473A6660044A379 /* libswiftCoreData.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCoreData.tbd; path = usr/lib/swift/libswiftCoreData.tbd; sourceTree = SDKROOT; };
-		BBE961932473F4CB0044A379 /* xxmo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xxmo.h; sourceTree = "<group>"; };
-		BBE961942473F4CB0044A379 /* xxmo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xxmo.m; sourceTree = "<group>"; };
+		BBE9619F247432740044A379 /* StudentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentModel.h; sourceTree = "<group>"; };
+		BBE961A0247432740044A379 /* StudentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentModel.m; sourceTree = "<group>"; };
+		BBE961A5247434CB0044A379 /* StudentModel+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StudentModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		BBE961A6247434CB0044A379 /* StudentModel+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StudentModel+CoreDataProperties.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBE96173247387A00044A379 /* CoreData.framework in Frameworks */,
+				BBE961A824743BCF0044A379 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,12 +127,12 @@
 				BBE9613C247385970044A379 /* ViewController.h */,
 				BBE9613D247385970044A379 /* ViewController.m */,
 				BBE9616E2473876B0044A379 /* UserInfoModel.xcdatamodeld */,
+				BBE9619F247432740044A379 /* StudentModel.h */,
+				BBE961A0247432740044A379 /* StudentModel.m */,
+				BBE961A5247434CB0044A379 /* StudentModel+CoreDataProperties.h */,
+				BBE961A6247434CB0044A379 /* StudentModel+CoreDataProperties.m */,
 				BBE9617A24738A6E0044A379 /* CoreDadaManager.h */,
 				BBE9617B24738A6E0044A379 /* CoreDadaManager.m */,
-				BBE961892473919C0044A379 /* StudentModel.h */,
-				BBE9618A2473919C0044A379 /* StudentModel.m */,
-				BBE961932473F4CB0044A379 /* xxmo.h */,
-				BBE961942473F4CB0044A379 /* xxmo.m */,
 				BBE9613F247385970044A379 /* Main.storyboard */,
 				BBE961422473859C0044A379 /* Assets.xcassets */,
 				BBE961442473859C0044A379 /* LaunchScreen.storyboard */,
@@ -304,9 +304,9 @@
 				BBE9613E247385970044A379 /* ViewController.m in Sources */,
 				BBE96138247385970044A379 /* AppDelegate.m in Sources */,
 				BBE961492473859C0044A379 /* main.m in Sources */,
-				BBE961952473F4CB0044A379 /* xxmo.m in Sources */,
-				BBE9618B2473919C0044A379 /* StudentModel.m in Sources */,
+				BBE961A7247434CB0044A379 /* StudentModel+CoreDataProperties.m in Sources */,
 				BBE9613B247385970044A379 /* SceneDelegate.m in Sources */,
+				BBE961A1247432740044A379 /* StudentModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
